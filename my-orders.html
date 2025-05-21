@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Orders - CampusCanteen</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins :wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/style.css" />
+  <link rel="stylesheet" href="../styles/theme.css" />
+</head>
+<body class="light">
+  <header>
+    <h1>🛍️ My Orders</h1>
+    <a href="index.html"><button>← Back to Menu</button></a>
+  </header>
+
+  <main>
+    <div id="orders-list"></div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 CampusCanteen</p>
+  </footer>
+
+  <script>
+    const orders = JSON.parse(localStorage.getItem('orders')) || [];
+
+    const container = document.getElementById('orders-list');
+    if (orders.length === 0) {
+      container.innerHTML = '<p>No orders yet.</p>';
+    } else {
+      orders.forEach(order => {
+        const card = document.createElement('div');
+        card.className = 'order-card';
+        card.innerHTML = `
+          <p>Date: ${order.date}</p>
+          <ul>
+            ${order.items.map(item => `<li>${item.name} x ${item.quantity} - ₹${item.price * item.quantity}</li>`).join('')}
+          </ul>
+          <p>Total: ₹${order.total.toFixed(2)}</p>
+          <p>Status: ${order.status}</p>
+        `;
+        container.appendChild(card);
+      });
+    }
+  </script>
+</body>
+</html>

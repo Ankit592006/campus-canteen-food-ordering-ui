@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CampusCanteen</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins :wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/style.css" />
+  <link rel="stylesheet" href="styles/theme.css" />
+  <link rel="stylesheet" href="styles/animations.css" />
+</head>
+<body class="light">
+  <div id="background-animation"></div>
+
+  <header>
+    <h1>🍴 CampusCanteen</h1>
+    <div class="header-buttons">
+      <a href="my-orders.html"><button id="my-orders-btn">🛍️ My Orders</button></a>
+      <button id="theme-toggle">🌙 Dark Mode</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="filter-bar">
+      <input type="text" id="search" placeholder="Search food..." />
+      <label><input type="checkbox" id="veg-filter" /> Show Only Veg</label>
+      <input type="range" id="price-range" min="0" max="200" value="200" />
+      <span>Max Price: ₹<span id="price-value">200</span></span>
+    </div>
+
+    <div id="menu" class="menu-grid"></div>
+
+    <button id="cart-icon">🛒 Cart (<span id="cart-count">0</span>)</button>
+    <div id="overlay" class="overlay"></div>
+    <div id="cart-drawer" class="drawer">
+      <button onclick="closeCart()" class="close-btn">❌</button>
+      <h2>Your Cart</h2>
+      <div id="cart-items"></div>
+      <p>Total: ₹<span id="cart-total">0</span></p>
+      <button onclick="placeOrder()">Place Order</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy;  CampusCanteen | Designed for College Cafeterias</p>
+  </footer>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="scripts/cart.js"></script>
+  <script src="scripts/main.js"></script>
+</body>
+</html>
